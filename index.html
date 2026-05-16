@@ -2202,6 +2202,7 @@ function updateProgress() {
 }
 
 function showStudyTab() {
+  buildQueue();
   const card = currentCard();
   if (!card) { renderEmptyState(); return; }
   renderFront(card);
@@ -2525,7 +2526,6 @@ let AppState;
 document.addEventListener('DOMContentLoaded', () => {
   AppState = loadState();
   if (AppState.stats.lastStudyDate !== TODAY) { AppState.stats.todayNewCount = 0; }
-  buildQueue();
 
   // Tab navigation
   document.querySelectorAll('.tab-btn').forEach(btn => {
