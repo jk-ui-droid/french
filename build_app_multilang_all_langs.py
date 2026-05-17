@@ -63,7 +63,7 @@ HTML_HEAD = '''<!DOCTYPE html>
 body { font-family: var(--font); background: var(--color-panel); color: var(--color-text); min-height: 100vh; }
 #shellbar { background: var(--color-primary); color: #fff; padding: 0.75rem 1.5rem; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 4px rgba(0,0,0,0.15); position: sticky; top: 0; z-index: 100; }
 .app-title { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.02em; }
-#lang-selector { background: #f5e6e0; border: 1px solid #e8d8cf; color: var(--color-text); padding: 0.3rem 0.6rem; border-radius: 0.3rem; font-size: 0.8rem; cursor: pointer; font-family: var(--font); }
+#lang-selector { background: #f5e6e0; border: 1px solid #e8d8cf; color: var(--color-text); padding: 0.5rem 0.75rem; border-radius: var(--radius); font-size: 0.9rem; cursor: pointer; font-family: var(--font); width: 100%; }
 #lang-selector:hover { background: #f0dcd3; }
 #tab-nav { display: flex; gap: 0; }
 .tab-btn { background: none; border: none; color: rgba(255,255,255,0.7); font: inherit; font-size: 0.9rem; font-weight: 500; padding: 0.5rem 1rem; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.15s; }
@@ -166,14 +166,6 @@ body { font-family: var(--font); background: var(--color-panel); color: var(--co
     <button class="tab-btn" data-tab="stats" data-i18n="tab.stats">Statistics</button>
     <button class="tab-btn" data-tab="settings" data-i18n="tab.settings">Settings</button>
   </nav>
-  <select id="lang-selector">
-    <option value="en">English</option>
-    <option value="fr">Français</option>
-    <option value="de">Deutsch</option>
-    <option value="es">Español</option>
-    <option value="it">Italiano</option>
-    <option value="pl">Polski</option>
-  </select>
 </header>
 
 <main id="tab-study" class="tab-panel active">
@@ -203,6 +195,17 @@ body { font-family: var(--font); background: var(--color-panel); color: var(--co
 </main>
 
 <main id="tab-settings" class="tab-panel">
+  <div class="settings-card">
+    <h3 data-i18n="settings.language">Language</h3>
+    <select id="lang-selector">
+      <option value="en">English</option>
+      <option value="fr">Français</option>
+      <option value="de">Deutsch</option>
+      <option value="es">Español</option>
+      <option value="it">Italiano</option>
+      <option value="pl">Polski</option>
+    </select>
+  </div>
   <div class="settings-card">
     <h3 data-i18n="settings.new.cards">New cards per day</h3>
     <div id="slider-row">
