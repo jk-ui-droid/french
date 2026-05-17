@@ -284,7 +284,6 @@ window.addEventListener('DOMContentLoaded', () => {
     document.getElementById('lang-selector').value = saved;
   }
   updateUIText();
-  // Load initial cards
   const csvText = ALL_CSV_DATA[CurrentCardLang] || ALL_CSV_DATA['en'];
   CARDS = Object.freeze(parseCSV(csvText));
 });
@@ -825,7 +824,16 @@ function initSettings() {
 let AppState;
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Ensure cards are loaded
+  // Restore language preference
+  const saved = localStorage.getItem('uiLang');
+  if (saved && UI_STRINGS[saved]) {
+    CurrentUILang = saved;
+    CurrentCardLang = saved;
+    document.getElementById('lang-selector').value = saved;
+    updateUIText();
+  }
+
+  // Ensure cards are loaded with correct language
   if (!CARDS || CARDS.length === 0) {
     const csvText = ALL_CSV_DATA[CurrentCardLang] || ALL_CSV_DATA['en'];
     CARDS = Object.freeze(parseCSV(csvText));
